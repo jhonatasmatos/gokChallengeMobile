@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import { connect } from 'react-redux';
@@ -7,7 +8,6 @@ import {
   Container,
   Content, 
   ContainerLogo,
-  Logo,
   ContainerText,
   Title,
   Text,
@@ -41,7 +41,7 @@ function Login() {
     <Container>
       <Content>
         <ContainerLogo>
-          <Logo source={githubImage} />
+          <Image source={githubImage} />
         </ContainerLogo>
 
         <ContainerText>

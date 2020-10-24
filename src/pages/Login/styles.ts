@@ -28,8 +28,7 @@ export const ContainerLogo = styled.View`
   align-items: center;
 `;
 
-export const Logo = styled.Image`
-`;
+export const Logo = styled.Image``;
 
 export const ContainerText = styled.View`
   width: 100%;
