@@ -24,15 +24,15 @@ import {
 import githubImage from '../../assets/githubImage.png';
 
 function Login() {
-  const [isDisabled, setIsDisabled] = useState(true);
+  const [isEnabled, setIsEnabled] = useState(true);
   const [userName, setUserName] = useState('');
 
   const handleRegister = () => {
-    
+    console.log(userName)
   }
 
   const fillUserName = (text: string) => {
-    text.length < 1 ? setIsDisabled(true) : setIsDisabled(false);
+    text.length < 1 ? setIsEnabled(false) : setIsEnabled(true);
 
     setUserName(text);
   }
@@ -61,7 +61,7 @@ function Login() {
         </ContainerInput>
 
         <ContainerButton>
-          <Button disabled={isDisabled} enabled={isDisabled} onPress={handleRegister}>
+          <Button disabled={isEnabled} enabled={isEnabled} onPress={handleRegister}>
             <ButtonText>Cadastrar</ButtonText>
           </Button>
         </ContainerButton>

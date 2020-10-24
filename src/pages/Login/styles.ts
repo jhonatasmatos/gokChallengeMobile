@@ -1,9 +1,9 @@
+import styled, { css } from 'styled-components/native';
 import { RectButton } from 'react-native-gesture-handler';
 import { KeyboardAvoidingView as Kav, Platform, View } from 'react-native';
-import styled, { css } from 'styled-components/native';
 
 interface ButtonProps {
-  disabled: boolean;
+  disabled?: boolean;
 }
 
 export const Container = styled(Platform.OS === 'ios' ? Kav : View).attrs({
@@ -104,7 +104,7 @@ export const Button = styled(RectButton)<ButtonProps>`
 
   background: #000;
 
-  ${props => props.disabled && css`
+  ${props => !props.disabled && css`
     background: #E5E5E5;
   `}
 `;
