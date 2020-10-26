@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import { connect } from 'react-redux';
@@ -27,15 +28,23 @@ function Login() {
   const [isEnabled, setIsEnabled] = useState(true);
   const [userName, setUserName] = useState('');
 
-  const handleRegister = () => {
-    console.log(userName)
-  }
+  const navigation = useNavigation();
 
-  const fillUserName = (text: string) => {
-    text.length < 1 ? setIsEnabled(false) : setIsEnabled(true);
+  const handleRegister= useCallback(
+    () => {
+      navigation.navigate('UsersList', { userName: userName });
+    },
+    [navigation]
+  );
+
+  const fillUserName= useCallback(
+    (text: string) => {
+      text.length < 1 ? setIsEnabled(false) : setIsEnabled(true);
 
     setUserName(text);
-  }
+    },
+    [setIsEnabled, setUserName]
+  );
 
   return (
     <Container>
@@ -55,6 +64,7 @@ function Login() {
             <Field 
               placeholder='@username'
               value={userName}
+              autoCapitalize='none'
               onChangeText={text => fillUserName(text)} 
             />
           </Input>
