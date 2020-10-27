@@ -7,11 +7,7 @@ const compareDate = (date: string): string | undefined => {
     let diffenrenceHour = Number(differenceInHours(Date.now(), parseISO(date)));
     let diffenrenceMinutes= Number(differenceInMinutes(Date.now(), parseISO(date)));
     let comparedDate;
-
-    console.log('diffenrenceDays', diffenrenceDays)
-    console.log('diffenrenceHour', diffenrenceHour)
-    console.log('diffenrenceMinutes', diffenrenceMinutes)
-
+    
     if(diffenrenceDays <= 0) {
       comparedDate = `${diffenrenceHour} horas atrás`;
     }
