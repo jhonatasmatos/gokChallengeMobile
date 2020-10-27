@@ -53,6 +53,7 @@ export const FilterContainer = styled.View`
 export const Search = styled.View`
   width: 296px;
   height: 40px;
+  border-radius: 4px;
 
   flex-direction: row;
 
@@ -73,6 +74,7 @@ export const SearchInput = styled.TextInput`
 export const FilterButton = styled.TouchableOpacity`
   width: 62px;
   height: 40px;
+  border-radius: 4px;
 
   align-items: center;
   justify-content: center;
@@ -94,7 +96,7 @@ export const RepositoryList = styled(FlatList as new () => FlatList<Request>)`
 
 export const Repository = styled.View`
   width: 100%;
-  height: 164px;
+  height: 176px;
   border-radius: 8px;
 
   margin-bottom: 8px;
@@ -159,7 +161,7 @@ export const LabelContainer = styled.View`
   flex-direction: row;
   align-items: center;
 
-  padding: 0px 20px 24px;
+  padding: 0px 20px 32px;
 `;
 
 export const LabelContent = styled.View`
@@ -197,7 +199,7 @@ export const InfosContainer = styled.View`
   width: 100%;
   height: 22px;
 
-  padding: 0px 20px 24px;
+  padding: 0px 20px 26px;
 
   flex-direction: row;
   justify-content: space-between;

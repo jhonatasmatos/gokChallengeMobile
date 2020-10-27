@@ -2,7 +2,7 @@ import React, { useEffect, useCallback, useState } from 'react';
 import { Image } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Ionicon from 'react-native-vector-icons/Ionicons';
-import Feather from 'react-native-vector-icons/Feather';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import { connect } from 'react-redux';
 
@@ -130,7 +130,7 @@ const RepositoriesList: React.FC = () => {
               </ProjectNameContainer>
 
               <StarredContainer>
-                <Ionicon name='star-outline' size={18} style={{ color: '#FFC700' }} />
+                <FontAwesome name='star' size={16} style={{ color: '#FFC700' }} />
               </StarredContainer>
             </ProjectContainer>
 
