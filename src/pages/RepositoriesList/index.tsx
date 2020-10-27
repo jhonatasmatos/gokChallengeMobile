@@ -31,8 +31,11 @@ import {
   StackContainer,
   StarsContainer,
   PeopleContainer,
+  TimeContainer,
   InfoText
 } from './styles';
+
+import compareDate from '../../utils/compare';
 
 import api from '../../services/api';
 
@@ -49,6 +52,7 @@ interface StarredRepo {
   stargazers_count: number;
   watchers_count: number;
   updated_at: string;
+  last_update: string;
 }
 
 const users = {
@@ -165,10 +169,10 @@ const RepositoriesList: React.FC = () => {
                 <InfoText>{item.watchers_count}</InfoText>
               </PeopleContainer>
 
-              <StackContainer>
+              <TimeContainer>
                 <Ionicon name='time-outline' size={16} style={{ color: '#7E7E7E', paddingRight: 5 }} />
-                <InfoText>2 dias atrás</InfoText>
-              </StackContainer>
+                <InfoText>{compareDate(item.updated_at)}</InfoText>
+              </TimeContainer>
             </InfosContainer>
 
           </Repository>

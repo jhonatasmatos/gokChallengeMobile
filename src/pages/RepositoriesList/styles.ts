@@ -169,7 +169,7 @@ export const LabelContent = styled.View`
   height: 22px;
   border-radius: 20px;
 
-  margin-right: 4px;
+  margin-right: 6px;
 
   align-items: center;
   justify-content: center;
@@ -199,14 +199,14 @@ export const InfosContainer = styled.View`
   width: 100%;
   height: 22px;
 
-  padding: 0px 20px 26px;
+  padding: 0px 20px 32px;
 
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 `;
 
 export const StackContainer = styled.View`
-  width: 80px;
+  width: 64px;
   height: 22px;
 
   align-items: center;
@@ -215,7 +215,7 @@ export const StackContainer = styled.View`
 `;
 
 export const StarsContainer = styled.View`
-  width: 42px;
+  width: 38px;
   height: 22px;
 
   align-items: center;
@@ -224,7 +224,16 @@ export const StarsContainer = styled.View`
 `;
 
 export const PeopleContainer = styled.View`
-  width: 42px;
+  width: 38px;
+  height: 22px;
+
+  align-items: center;
+
+  flex-direction: row;
+`;
+
+export const TimeContainer = styled.View`
+  width: 64px;
   height: 22px;
 
   align-items: center;
