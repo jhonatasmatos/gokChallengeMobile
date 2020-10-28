@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback, useState } from 'react';
-import { Image } from 'react-native';
+import { Image, Modal, Alert } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Ionicon from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -32,7 +32,20 @@ import {
   StarsContainer,
   PeopleContainer,
   TimeContainer,
-  InfoText
+  InfoText,
+  ModalContainer,
+  ModalContent,
+  ContainerTitle,
+  Title,
+  SearchLabel,
+  SearchInputLabel,
+  ContainerSuggestion,
+  SuggestionText,
+  ContainerModalButton,
+  SaveButton,
+  SaveButtonText,
+  CancelButton,
+  CancelButtonText
 } from './styles';
 
 import compareDate from '../../utils/compare';
@@ -73,6 +86,8 @@ const tags = [
 
 const RepositoriesList: React.FC = () => {
   const [starredRepositories, setStarredRepositories] = useState<StarredRepo[]>([]);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalType, setModalType] = useState('');
 
   const route = useRoute();
   const routeParams = route.params as Params;
@@ -90,6 +105,28 @@ const RepositoriesList: React.FC = () => {
 
     getRepositories();
   }, []);
+  
+  const handleOpenModal = useCallback(
+    (type: string) => {
+      type === 'edit' ? setModalType('edit') : setModalType('add');
+      setModalVisible(true);
+    },
+    [setModalVisible]
+  );
+
+  const handleCloseModal = useCallback(
+    () => {
+      setModalVisible(false);
+    },
+    [setModalVisible]
+  );
+
+  const handleSave = useCallback(
+    () => {
+      setModalVisible(false);
+    },
+    [setModalVisible]
+  );
 
   return (
     <Container>
@@ -128,7 +165,7 @@ const RepositoriesList: React.FC = () => {
         renderItem={({ item, index }) => (
           <Repository>
             <ProjectContainer>
-              <ProjectNameContainer>
+              <ProjectNameContainer onPress={() => handleOpenModal('add')}>
                 <ProjectName>{item.name}</ProjectName>
                 <Ionicon name='chevron-forward-outline' size={24} style={{ color: '#000', paddingLeft: 8 }} />
               </ProjectNameContainer>
@@ -148,7 +185,7 @@ const RepositoriesList: React.FC = () => {
                   <LabelText># {tag.stack}</LabelText>
                 </LabelContent>
               ))}
-              <EditButton>
+              <EditButton onPress={() => handleOpenModal('edit')}>
                 <Ionicon name='pencil-outline' size={12} style={{ color: '#fff' }} />
               </EditButton>
             </LabelContainer>
@@ -178,6 +215,47 @@ const RepositoriesList: React.FC = () => {
           </Repository>
         )}
       />
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={handleCloseModal}
+      >
+        <ModalContainer>
+          <ModalContent>
+            <ContainerTitle>
+              {modalType === 'add' ? (
+                <Title>Adicionar tags</Title>
+              ):(
+                <Title>Editar tags</Title>
+              )}
+            </ContainerTitle>
+
+            <SearchLabel>
+              <Ionicon name='search-outline' size={24} style={{ color: '#7E7E7E' }} />
+              <SearchInputLabel
+                autoCapitalize='none'
+              />
+            </SearchLabel>
+
+            <ContainerSuggestion>
+              <SuggestionText>Sugestões</SuggestionText>
+            </ContainerSuggestion>
+
+            <ContainerModalButton>
+              <SaveButton onPress={handleSave}>
+                <SaveButtonText>Salvar</SaveButtonText>
+              </SaveButton>
+
+              <CancelButton onPress={handleCloseModal}>
+                <CancelButtonText>Cancelar</CancelButtonText>
+              </CancelButton>
+            </ContainerModalButton>
+
+          </ModalContent>
+        </ModalContainer>
+      </Modal>
     </Container>
   );
 };

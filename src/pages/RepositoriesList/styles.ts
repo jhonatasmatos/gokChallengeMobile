@@ -247,4 +247,117 @@ export const InfoText = styled.Text`
 
   color: #7E7E7E;
 `;
+
+export const ModalContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0, 0, 0, 0.72);
+`;
+
+export const ModalContent = styled.View`
+  width: 342px;
+  height: 418px;
+  background: #fff;
+  border-radius: 8px;
+`;
+
+export const ContainerTitle = styled.View`
+  width: 100%;
+  height: 30px;
+
+  padding-left: 26px;
+  padding-top: 32px;
+
+  justify-content: center;
+`;
+
+export const Title = styled.Text`
+  font-family: 'Mulish-Bold';
+  font-size: 22px;
+`;
   
+export const SearchLabel = styled.View`
+  width: 280px;
+  height: 40px;
+  border-radius: 4px;
+
+  border: 1px solid #E5E5E5;
+
+  flex-direction: row;
+  align-items: center;
+
+  margin: 20px 26px;
+  padding-left: 10px;
+`;
+
+export const SearchInputLabel = styled.TextInput`
+  width: 180px;
+  height: 40px;
+
+  padding-left: 8px;
+`;
+
+export const ContainerSuggestion = styled.View`
+  width: 286px;
+  height: 164px;
+  border-radius: 8px;
+
+  border: 1px solid #E5E5E5;
+
+  margin: 0px 26px;
+`;
+
+export const SuggestionText = styled.Text`
+  font-family: 'Mulish-Regular';
+  font-size: 16px;
+
+  padding-top: 14px;
+  padding-left: 14px;
+
+  color: #7E7E7E;
+`;
+
+export const ContainerModalButton = styled.View`
+  width: 286px;
+  height: 80px;
+
+  margin: 24px 26px;
+`;
+
+export const SaveButton = styled(RectButton)`
+  width: 286px;
+  height: 40px;
+  border-radius: 20px;
+
+  align-items: center;
+  justify-content: center;
+
+  background: #000;
+`;
+
+export const SaveButtonText = styled.Text`
+  font-family: 'Mulish-Regular';
+  font-size: 16px;
+
+  color: #fff;
+`;
+
+export const CancelButton = styled.TouchableOpacity`
+  width: 286px;
+  height: 20px;
+  border-radius: 20px;
+
+  margin-top: 16px;
+
+  align-items: center;
+  justify-content: center;
+`;
+
+export const CancelButtonText = styled.Text`
+  font-family: 'Mulish-Regular';
+  font-size: 16px;
+
+  color: #000;
+`;
