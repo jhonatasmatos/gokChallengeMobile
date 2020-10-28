@@ -1,0 +1,98 @@
+import React, { useState, useCallback } from 'react';
+import { Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/Ionicons';
+
+import { connect } from 'react-redux';
+
+import { 
+  Container,
+  Content, 
+  ContainerLogo,
+  ContainerText,
+  Title,
+  Text,
+  ContainerInput,
+  Field,
+  Input,
+  ContainerButton,
+  Button,
+  ButtonText,
+  ContainerFooter,
+  FooterText 
+} from './styles';
+
+import githubImage from '../../assets/githubImage.png';
+
+function Login() {
+  const [isEnabled, setIsEnabled] = useState(true);
+  const [userName, setUserName] = useState('');
+
+  const navigation = useNavigation();
+
+  const handleRegister= useCallback(
+    () => {
+      navigation.navigate('UsersList', { userName: userName });
+    },
+    [navigation]
+  );
+
+  const fillUserName= useCallback(
+    (text: string) => {
+      text.length < 1 ? setIsEnabled(false) : setIsEnabled(true);
+
+    setUserName(text);
+    },
+    [setIsEnabled, setUserName]
+  );
+
+  return (
+    <Container>
+      <Content>
+        <ContainerLogo>
+          <Image source={githubImage} />
+        </ContainerLogo>
+
+        <ContainerText>
+          <Title>Buscar usuário</Title>
+          <Text>Crie sua conta através do seu usuário do GitHub</Text>
+        </ContainerText>
+
+        <ContainerInput>
+          <Input>
+            <Icon name='person-circle-outline' size={24} style={{ paddingLeft: 14, paddingRight: 8, color: '#7E7E7E' }} />      
+            <Field 
+              placeholder='@username'
+              value={userName}
+              autoCapitalize='none'
+              onChangeText={text => fillUserName(text)} 
+            />
+          </Input>
+        </ContainerInput>
+
+        <ContainerButton>
+          <Button disabled={isEnabled} enabled={isEnabled} onPress={handleRegister}>
+            <ButtonText>Cadastrar</ButtonText>
+          </Button>
+        </ContainerButton>
+
+        <ContainerFooter>
+          <FooterText>Termos de política e privacidade</FooterText>
+        </ContainerFooter>
+      </Content>
+    </Container>
+  );
+};
+
+const mapStateToProps = () => ({
+  
+});
+
+const mapDispatchToProps = {
+  
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);
